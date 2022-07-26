@@ -7,8 +7,11 @@ import { environment } from 'src/environments/environment';
 })
 export class ProductService {
   constructor(private http: HttpClient) {}
-private apiUrl=environment.baseUrl
-  getAllProducts(){
-    return this.http.get<any>(this.apiUrl +'products')
+  private apiUrl = environment.baseUrl;
+  getAllProducts() {
+    return this.http.get<any>(this.apiUrl + 'products');
+  }
+  getAllCategories() {
+    return this.http.get<any>(this.apiUrl + 'products/categories');
   }
 }
