@@ -14,4 +14,8 @@ export class ProductService {
   getAllCategories() {
     return this.http.get<any>(this.apiUrl + 'products/categories');
   }
+
+  getProductsByCategory(name:string) {
+    return this.http.get<any>(this.apiUrl+'products/category/'+name)
+  }
 }

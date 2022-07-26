@@ -35,4 +35,26 @@ export class AllProductsComponent implements OnInit {
       },
     });
   }
+
+  filterByCategory(event: any) {
+    let name = event.target.value;
+    console.log(name);
+    // if (name == 'all') {
+    //   this.getProducts();
+    // } else {
+    //   this.getProductsCategory(name);}
+
+    // Short Condition
+    name == 'all' ? this.getProducts() : this.getProductsCategory(name);
+  }
+  getProductsCategory(keyword: string) {
+    this.service.getProductsByCategory(keyword).subscribe({
+      next: (res: any) => {
+        this.products = res;
+      },
+      error: (err: any) => {
+        console.log(err);
+      },
+    });
+  }
 }
