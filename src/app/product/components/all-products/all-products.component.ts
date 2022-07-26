@@ -9,6 +9,7 @@ import { ProductService } from '../../services/product.service';
 export class AllProductsComponent implements OnInit {
   products: any[] = [];
   categories: any[] = [];
+  loading:boolean=false
   constructor(private service: ProductService) {}
 
   ngOnInit(): void {
@@ -26,12 +27,15 @@ export class AllProductsComponent implements OnInit {
     });
   }
   getProducts() {
+    this.loading=true
     this.service.getAllProducts().subscribe({
       next: (res: any) => {
         this.products = res;
+        this.loading=false
       },
       error: (err: any) => {
         console.log(err);
+        this.loading=false
       },
     });
   }
